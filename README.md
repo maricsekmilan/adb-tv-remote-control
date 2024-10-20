@@ -79,7 +79,7 @@ This project allows you to control the volume and navigation of an Android TV St
 
 
   
-7. **Run the App**
+6. **Run the App**
 - Execute the following command in your terminal:
   ```
   python app.py
