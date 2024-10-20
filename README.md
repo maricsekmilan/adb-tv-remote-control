@@ -2,6 +2,9 @@
 
 This project allows you to control the volume and navigation of an Android TV Stick using a web interface.
 
+[![Watch the video](https://img.youtube.com/vi/Qe83iHiEL4g/0.jpg)](https://youtu.be/Qe83iHiEL4g)
+
+
 ## Libraries Used
 
 - **Flask**: A web framework for Python.
