@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Control</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Circular layout for direction buttons */
+        .circle-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .circle-container button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+
+        /* Positions for direction buttons */
+        #up { top: 0; left: 50%; transform: translate(-50%, -50%); }
+        #down { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+        #left { left: 0; top: 50%; transform: translate(-50%, -50%); }
+        #right { right: 0; top: 50%; transform: translate(50%, -50%); }
+        #ok { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+        /* Volume buttons as a separate container */
+        .volume-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .volume-container button {
+            width: 120px;
+            height: 50px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function sendVolumeUp() {
+            fetch('/volume/up', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendVolumeDown() {
+            fetch('/volume/down', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendUpKey() {
+            fetch('/up', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendDownKey() {
+            fetch('/down', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendRightKey() {
+            fetch('/right', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendLeftKey() {
+            fetch('/left', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendOKKey() {
+            fetch('/ok', { method: 'POST' })
+                .then(response => response.json());
+        }
+
+        function sendBackKey() {
+            fetch('/back', { method: 'POST' })
+                .then(response => response.json());
+        }
+    </script>
+</head>
+<body>
+    <h1>Android TV Stick Volume Control</h1>
+
+    <!-- Direction buttons and OK in a circular layout -->
+    <div class="circle-container">
+        <button id="up" onclick="sendUpKey()">Up</button>
+        <button id="down" onclick="sendDownKey()">Down</button>
+        <button id="left" onclick="sendLeftKey()">Left</button>
+        <button id="right" onclick="sendRightKey()">Right</button>
+        <button id="ok" onclick="sendOKKey()">OK</button>
+    </div>
+
+    <!-- Volume buttons in a separate container -->
+    <div class="volume-container">
+        <button onclick="sendVolumeDown()">Decrease Volume</button>
+        <button onclick="sendVolumeUp()">Increase Volume</button>
+    </div>
+
+    <!-- Back button separately -->
+    <div style="margin-top: 20px;">
+        <button onclick="sendBackKey()">Back</button>
+    </div>
+</body>
+</html>
