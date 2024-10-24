@@ -16,8 +16,10 @@ This project allows you to control the volume and navigation of an Android TV St
 
 1. **Download SDK Platform Tools**
    - Visit the [Android SDK Platform Tools page](https://developer.android.com/tools/releases/platform-tools) to download the package.
+<br>
 
 2. **Add ADB to the PATH Variable in the System Variables**
+
    2a. **Locate ADB**
    - Download the Android SDK Platform Tools package if you haven't already.
    - After extracting the package, note the folder where `adb.exe` is located (e.g., `C:\Users\YourUsername\AppData\Local\Android\Sdk\platform-tools`).
@@ -47,8 +49,11 @@ This project allows you to control the volume and navigation of an Android TV St
    - Open the Command Prompt.
    - Type `adb version` and press Enter.
    - If the PATH is set correctly, you should see the version of `adb`.
+ <br>
+
 
 3. **Open Your Android TV Device and Enable Developer Options**
+
    3a. **Turn On Your Android TV**
    - Make sure your Android TV is powered on and you are on the home screen.
 
@@ -69,28 +74,31 @@ This project allows you to control the volume and navigation of an Android TV St
    3f. **Enable USB Debugging**
    - Inside Developer Options, find USB debugging and turn it on. This option allows you to connect your Android TV to a computer for development purposes, such as using ADB commands.
 
+<br>
+
 4. **Connect to Your Android Device**
    - Open Command Prompt and type:
      ```
      adb connect <your android device ip address>
      ```
    - The first time it will ask you to enable the connection on your Android device; set it to OK.
+<br>
 
 5. **Make the Right Folder Structure**
    
 ![image](https://github.com/user-attachments/assets/8c0f8853-c6d2-4a9a-98ee-fc9d80afe44e)
 
-
-  
 6. **Run the App**
 - Execute the following command in your terminal:
   ```
   python app.py
   ```
+<br>
 
 7. **Open the Browser**
 - Type `127.0.0.1:5000` or your IP address into the browser.
-
+ <br>
+ 
 8. **Control Your Android TV Device**
 - Now you can control your Android TV device from the web interface!
 
