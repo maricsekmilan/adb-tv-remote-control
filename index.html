@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volume Control</title>
+
     <style>
         body {
             display: flex;
@@ -16,7 +17,7 @@
             margin-bottom: 20px;
         }
 
-        /* Circular layout for direction buttons */
+        /* Iránygombok kör alakú elrendezése */
         .circle-container {
             position: relative;
             width: 200px;
@@ -30,16 +31,17 @@
             height: 60px;
             border-radius: 50%;
             font-size: 16px;
+            touch-action: none;
         }
 
-        /* Positions for direction buttons */
+        /* Iránygombok pozíciói */
         #up { top: 0; left: 50%; transform: translate(-50%, -50%); }
         #down { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
         #left { left: 0; top: 50%; transform: translate(-50%, -50%); }
         #right { right: 0; top: 50%; transform: translate(50%, -50%); }
         #ok { left: 50%; top: 50%; transform: translate(-50%, -50%); }
 
-        /* Volume buttons as a separate container */
+        /* Hangerő gombok külön szigetként */
         .volume-container {
             display: flex;
             gap: 10px;
@@ -50,71 +52,71 @@
             width: 120px;
             height: 50px;
             font-size: 16px;
+            touch-action: none;
+        }
+
+        /* Back és Power gombok stílusai */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+
+        }
+
+        .action-buttons button {
+            width: 120px;
+            height: 50px;
+            font-size: 16px;
+            touch-action: none;
+        }
+
+        /* Power gomb piros színben és dupla méretben */
+        .power-button {
+            width: 120px;
+            height: 100px;
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
         }
     </style>
     <script>
-        function sendVolumeUp() {
-            fetch('/volume/up', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendVolumeDown() {
-            fetch('/volume/down', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendUpKey() {
-            fetch('/up', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendDownKey() {
-            fetch('/down', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendRightKey() {
-            fetch('/right', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendLeftKey() {
-            fetch('/left', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendOKKey() {
-            fetch('/ok', { method: 'POST' })
-                .then(response => response.json());
-        }
-
-        function sendBackKey() {
-            fetch('/back', { method: 'POST' })
-                .then(response => response.json());
-        }
+        function sendVolumeUp() { fetch('/volume/up', { method: 'POST' }).then(response => response.json()); }
+        function sendVolumeDown() { fetch('/volume/down', { method: 'POST' }).then(response => response.json()); }
+        function sendUpKey() { fetch('/up', { method: 'POST' }).then(response => response.json()); }
+        function sendDownKey() { fetch('/down', { method: 'POST' }).then(response => response.json()); }
+        function sendRightKey() { fetch('/right', { method: 'POST' }).then(response => response.json()); }
+        function sendLeftKey() { fetch('/left', { method: 'POST' }).then(response => response.json()); }
+        function sendOKKey() { fetch('/ok', { method: 'POST' }).then(response => response.json()); }
+        function sendBackKey() { fetch('/back', { method: 'POST' }).then(response => response.json()); }
+        function sendPowerKey() { fetch('/power', { method: 'POST' }).then(response => response.json()); }
     </script>
 </head>
 <body>
-    <h1>Android TV Stick Remote Control</h1>
+    <h1>Android TV Távirányító</h1>
+    <br>>
 
-    <!-- Direction buttons and OK in a circular layout -->
+    <!-- Iránygombok és OK kör alakú elrendezésben -->
     <div class="circle-container">
-        <button id="up" onclick="sendUpKey()">Up</button>
-        <button id="down" onclick="sendDownKey()">Down</button>
-        <button id="left" onclick="sendLeftKey()">Left</button>
-        <button id="right" onclick="sendRightKey()">Right</button>
+        <button id="up" onclick="sendUpKey()">Fel</button>
+        <button id="down" onclick="sendDownKey()">Le</button>
+        <button id="left" onclick="sendLeftKey()">Balra</button>
+        <button id="right" onclick="sendRightKey()">Jobbra</button>
         <button id="ok" onclick="sendOKKey()">OK</button>
     </div>
 
-    <!-- Volume buttons in a separate container -->
+    <!-- Hangerő gombok külön sziget -->
     <div class="volume-container">
-        <button onclick="sendVolumeDown()">Decrease Volume</button>
-        <button onclick="sendVolumeUp()">Increase Volume</button>
+        <button onclick="sendVolumeDown()">Hangerő -</button>
+        <button onclick="sendVolumeUp()">Hangerő +</button>
     </div>
 
-    <!-- Back button separately -->
-    <div style="margin-top: 20px;">
-        <button onclick="sendBackKey()">Back</button>
+    <!-- Back és Power gombok külön sziget -->
+    <div class="action-buttons">
+        <button onclick="sendBackKey()">Vissza</button>
+        <button class="power-button" onclick="sendPowerKey()">Power</button>
     </div>
 </body>
 </html>
